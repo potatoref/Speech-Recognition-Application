@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import pyaudio
 import tkinter as tk
+import threading
 
 # Global variables
 is_listening = False
@@ -17,6 +18,11 @@ def format_text(text, max_words_per_line=10):
         formatted_text += line + '\n'
     
     return formatted_text.strip()
+
+def start_listening_thread():
+    """Starts the listening process in a separate thread."""
+    listening_thread = threading.Thread(target=start_listening)
+    listening_thread.start()
 
 def start_listening():
     global is_listening, target_words, word_counts
@@ -93,7 +99,7 @@ set_word_button = tk.Button(root, text="Set Target Words", command=set_target_wo
 set_word_button.pack(pady=10)
 
 # Button to start/stop listening
-button = tk.Button(root, text=start_stop_button_text(), command=lambda: [start_listening() if not is_listening else stop_listening(), update_button()])
+button = tk.Button(root, text=start_stop_button_text(), command=lambda: [start_listening_thread() if not is_listening else stop_listening(), update_button()])
 button.pack(pady=10)
 
 # Area to display the recognized text
