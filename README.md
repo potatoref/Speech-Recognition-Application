@@ -14,7 +14,7 @@ This project is a simple **Speech Recognition Application** built with Python. I
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/potatoref/Speech-Recognition-Application.git
    cd your-repo-name
    ```
 
